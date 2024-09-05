@@ -30,31 +30,6 @@ def download_and_save_image_layer(image_name, output_dir):
             with tarfile.open(layer_tar_path, 'r') as layer_tar:
                 layer_tar.extractall(path=layer_output_dir)
 
-# 태그 불러오기
-def fetch_image_tags(image_name):
-    tags = []
-    page_size = 100
-
-    # Get Total Image Count
-    url = f"https://hub.docker.com/v2/repositories/{image_name}/tags"
-    response = requests.get(url)
-    count = response.json()['count']
-    total_page = count//100 + 1
-
-    # Get Tag (All image)
-    # Try Catch로 예외처리 추가하기 -> API 호출 리미트 측정
-    print(f"Get tag - {image_name} / Total={count}")
-    for page in tqdm(range(1, total_page+1 , 1), desc=f"Get tag({image_name})"):
-        url = f"https://hub.docker.com/v2/repositories/{image_name}/tags/?page_size={page_size}&page={page}"
-        response = requests.get(url)
-        if response.status_code != 200:
-            print(f"Page{page} : 태그 정보를 가져오지 못했습니다: {response.status_code} - {response.text}")
-        tags_info = response.json()['results']
-        for tag in tags_info:
-            tags.append(tag['name'])
-
-    print()
-    return tags
 
 def docker_crawling(image_name):
     for name in image_name:
