@@ -44,7 +44,7 @@ def docker_crawling(image_name, start_index):
     print(f"Get image and save layers - {image_name}")
     for image in tqdm(image_name_tag):
         tag = image.split(":")[1].replace('.','_').replace('-','_')
-        output_dir = "../images/" + image_name + "/" + tag
+        output_dir = "../image/" + image_name + "/" + tag
         
         os.makedirs(output_dir, exist_ok=True)
 
