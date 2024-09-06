@@ -16,7 +16,7 @@ echo "Updating package index..."
 sudo apt-get update
 
 echo "Installing Docker 26.1.4..."
-sudo apt-get install -y docker-ce=5:26.1.4~3-0~ubuntu-focal docker-ce-cli=5:26.1.4~3-0~ubuntu-focal containerd.io
+sudo apt-get install -y docker-ce=5:26.1.4~3-0~ubuntu-jammy docker-ce-cli=5:26.1.4~3-0~ubuntu-jammy containerd.io
 
 echo "Verifying Docker version..."
 docker --version
