@@ -6,6 +6,7 @@ from tqdm import tqdm
 import sys
 
 # Pull Image & Save Layer
+# Image pull에 실패했을 때 최종 인덱스를 반환해서 다음 작업을 해당 인덱스부터 수행할 수 있게 만들어야 함
 def download_and_save_image_layer(image_name, output_dir):
     client = docker.from_env()
     
