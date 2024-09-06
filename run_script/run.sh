@@ -19,6 +19,8 @@ do
     python ../code/pull_and_save_image.py $REPOSITORY $START_INDEX
     STATUS=$?
 
+    # DB에 저장하고 성공적으로 저장 이후 Delete 부분 추가
+
     if [ $STATUS -eq 0 ]; then # 성공적 다운로드
         START_INDEX=$(expr $START_INDEX + 200)
     elif [ $STATUS -eq 1 ]; then # 특정 Repository의 모든 Tag 다운로드 완료

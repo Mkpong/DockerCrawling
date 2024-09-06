@@ -47,16 +47,16 @@ def docker_crawling(image_name, start_index):
             return 1
         image_name_tag = all_lines[start_index : start_index+200]
         
-    # image_name_tag = [name.strip() for name in image_name_tag] # 파일에서 읽어올 때 발생한 개행문자 제거
+    image_name_tag = [name.strip() for name in image_name_tag] # 파일에서 읽어올 때 발생한 개행문자 제거
     
     print(f"Get image and save layers - {image_name}({start_index})")
-    # for image in tqdm(image_name_tag):
-    #     tag = image.split(":")[1].replace('.','_').replace('-','_')
-    #     output_dir = "../image/" + image_name + "/" + tag
+    for image in tqdm(image_name_tag):
+        tag = image.split(":")[1].replace('.','_').replace('-','_')
+        output_dir = "../image/" + image_name + "/" + tag
         
-    #     os.makedirs(output_dir, exist_ok=True)
+        os.makedirs(output_dir, exist_ok=True)
 
-    #     download_and_save_image_layer(image, output_dir)
+        download_and_save_image_layer(image, output_dir)
 
     return 0
         
