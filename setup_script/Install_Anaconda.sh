@@ -22,7 +22,7 @@ echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bashrc
 rm -rf $ANACONDA_INSTALLER
 
 source ~/.bashrc
+conda init bash
 
 echo "Anaconda installation complete!"
-
-conda --version
+echo "Restart your shell"

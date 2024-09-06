@@ -14,8 +14,8 @@ def download_and_save_image_layer(image_name, output_dir, platform="arm64"):
     try:
         image = client.images.pull(image_name, platform=platform)
     except docker.errors.APIError as e:
-        print(f"{platform} 플랫폼에 대한 {image_name} 이미지를 가져오는 중 오류 발생: {e}")
-        return
+        print(f"{platform} 플랫폼에 대한 {image_name} 이미지를 가져오는 중 오류 발생\n{e}")
+        return -1
     
     image_tar_path = os.path.join(output_dir, f"{image_name.replace(':', '_')}.tar")
     
@@ -56,7 +56,9 @@ def docker_crawling(image_name, start_index):
         
         os.makedirs(output_dir, exist_ok=True)
 
-        download_and_save_image_layer(image, output_dir)
+        return_code = download_and_save_image_layer(image, output_dir)
+        if return_code == -1:
+            os.rmdir(output_dir)
 
     return 0
         
