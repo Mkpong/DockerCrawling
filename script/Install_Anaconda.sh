@@ -18,6 +18,9 @@ export PATH="$INSTALL_PATH/bin:$PATH"
 
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bashrc
 
+# 아다 설치파일 삭제
+rm -rf $ANACONDA_INSTALLER
+
 source ~/.bashrc
 
 echo "Anaconda installation complete!"
