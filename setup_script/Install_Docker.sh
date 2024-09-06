@@ -1,4 +1,6 @@
-# 도커 설치 스크립트 for Ubuntu 20.04
+# 도커 설치 스크립트 for Ubuntu
+DOCKER_VERSION="5:26.1.4-1~ubuntu.22.04~jammy"
+
 echo "Removing old Docker versions..."
 sudo apt-get remove -y docker docker-engine docker.io containerd runc
 
@@ -16,7 +18,7 @@ echo "Updating package index..."
 sudo apt-get update
 
 echo "Installing Docker 26.1.4..."
-sudo apt-get install -y docker-ce=5:26.1.4-1~ubuntu.22.04~jammy docker-ce-cli=5:26.1.4-1~ubuntu.22.04~jammy containerd.io
+sudo apt-get install -y docker-ce=$DOCKER_VERSION docker-ce-cli=$DOCKER_VERSION containerd.io
 
 echo "Verifying Docker version..."
 docker --version
